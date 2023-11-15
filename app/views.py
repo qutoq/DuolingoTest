@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, get_user_model
+from django.utils import timezone
 
 from .forms import UserRegistrationForm
 from .models import Post, Profile
@@ -9,8 +10,13 @@ def main(request):
     return render(request, "html/main.html", {})
 
 
-def post(request):
-    return render(request, "html/post.html", {})
+def post_list(request):
+    posts = Post.objects.all()
+    return render(request, 'html/post.html', {'posts': posts})
+
+
+def post_new(request):
+    pass
 
 
 def register(request):
