@@ -6,6 +6,7 @@
 ### Модели
 1. **Post:** author, title, text, created_date, published_date
 2. **Пользователи** 
+3. **Course:** title, image, description, link, city, address, schedule, cost
 
 ### Локальный запуск 
 Dockerfile пока не работает

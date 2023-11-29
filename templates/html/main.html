@@ -9,10 +9,34 @@
 <div>
     <p>Aenean eu leo quam.</p>
 </div>
-<img src="{% static 'img/apple.png' %}" width="400" alt="img">
+<img src="{% static 'img/apple.png' %}" width="200" alt="img">
 
 <div>
     <p>sem lacinia quam venenatis vestibulum</p>
+</div>
+
+
+<div class="row" data-masonry='{"percentPosition": true}'>
+  {% for course in courses %}
+  <div class="col-sm-6 col-lg-4 mb-4">
+    <div class="card min-vw-540" >
+      <div class="row g-0">
+        <div class="col-4">
+          {% if course.image %}
+            <img src="{{course.image.url}}"  alt="img" class="img-fluid">
+          <p1>{{course.image.url}}</p1>
+          {% endif %}
+        </div>
+        <div class="col-8">
+          <h5 class="card-title"><a href="{{ course.link }}" target="_blank" class="btn btn-primary w-100">{{ course.title }}</a></h5>
+          <div class="card-body">
+            <p class="card-text">{{ course.description|linebreaksbr }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
 </div>
 
 {% endblock content %}

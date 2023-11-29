@@ -3,11 +3,12 @@ from django.contrib.auth import authenticate, login, get_user_model
 from django.utils import timezone
 
 from .forms import UserRegistrationForm
-from .models import Post, Profile
+from .models import Post, Profile, Course
 
 
 def main(request):
-    return render(request, "html/main.html", {})
+    courses = Course.objects.all()
+    return render(request, "html/main.html", {'courses': courses})
 
 
 def post_list(request):

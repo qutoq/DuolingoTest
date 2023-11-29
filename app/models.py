@@ -20,6 +20,20 @@ class Post(models.Model):
         return self.title
 
 
+class Course(models.Model):
+    title = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='course/', blank=True, null=True)
+    description = models.TextField()
+    link = models.CharField(max_length=200, default='-')  # !
+    city = models.CharField(max_length=50)
+    address = models.CharField(max_length=100)
+    schedule = models.CharField(max_length=100)
+    cost = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.title
+
+
 class Profile(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     count_test = models.IntegerField(default=0)
