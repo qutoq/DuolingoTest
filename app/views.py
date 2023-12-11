@@ -1,23 +1,32 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, get_user_model
+from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 
-from .forms import UserRegistrationForm
+from .forms import UserRegistrationForm, SetPassForm, ContactForm
 from .models import Post, Profile, Course
 
 
 def main(request):
     courses = Course.objects.all()
-    return render(request, "html/main.html", {'courses': courses})
+    if request.method == "POST":
+        form = ContactForm(request.POST)
+        if form.is_valid():
+            msg = form.save(commit=False)
+            msg.timeAdd = timezone.now()
+            msg.save()
+            form = ContactForm()
+    else:
+        form = ContactForm()
+    return render(request, "DuolingoTest.html", {"form": form, "courses": courses})
 
 
 def post_list(request):
     posts = Post.objects.all()
-    return render(request, 'html/post.html', {'posts': posts})
+    return render(request, 'post.html', {'posts': posts})
 
 
-def post_new(request):
-    pass
+# registration
 
 
 def register(request):
@@ -34,4 +43,27 @@ def register(request):
     else:
         form = UserRegistrationForm()
 
-    return render(request, 'html/registration.html', {"form": form})
+    return render(request, 'registration/registration.html', {"form": form})
+
+
+@login_required(login_url='app:login')
+def password_change(request):
+    user = request.user
+    if request.method == 'POST':
+        form = SetPassForm(user, request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('app:login')
+
+    form = SetPassForm(user)
+    return render(request, 'registration/password_change.html', {'form': form})
+
+
+@login_required(login_url='app:login')
+def profile(request):
+    username = request.user.username
+    user = get_user_model().objects.filter(username=username).first()
+    return render(request, 'registration/profile.html', {"user": user})
+
+
+
