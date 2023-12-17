@@ -1,7 +1,7 @@
 ## Фронтенд
 templates/ - html файлы
 
-templates/registration/ - страницы для входа/выхода + личный кабинет
+templates/registration/ - страницы для входа/выхода
 
 templates/base.html - шаблон для всех страниц 
 
@@ -22,7 +22,7 @@ fonts/ - шрифты
 В css static не прогружается, поэтому вынес из login.css в
 `<style> .side-image {background-image: url('{% static "/img/cat.jpeg" %}');} </style>`S
 
-Для шрифтов немного подругому
+Для шрифтов немного по другому
 
 
 ### Примечания
