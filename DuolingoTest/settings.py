@@ -19,6 +19,7 @@ ALLOWED_HOSTS = ["*"]  # for debug
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 LOGIN_REDIRECT_URL = '/profile'
+LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 

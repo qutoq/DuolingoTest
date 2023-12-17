@@ -36,11 +36,6 @@ class Course(models.Model):
 
 class Profile(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    count_test = models.IntegerField(default=0)
-    count_ok = models.IntegerField(default=0)
-    count_total = models.IntegerField(default=0)
-    que_id = defaultdict(int)
-    count_corr = defaultdict(int)
 
     def __str__(self):
         return self.user.username

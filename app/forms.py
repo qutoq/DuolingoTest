@@ -1,5 +1,5 @@
 from django import forms
-from django.contrib.auth.forms import SetPasswordForm, UserCreationForm
+from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from .models import Contact
 
@@ -17,14 +17,9 @@ class ContactForm(forms.ModelForm):
         }
 
 
-class SetPassForm(SetPasswordForm):
-    class Meta:
-        model = get_user_model()
-        fields = ['new_password1', 'new_password2']
-
-
 class UserRegistrationForm(UserCreationForm):
     email = forms.EmailField(help_text='Комментарий', required=True)
+    first_name = forms.CharField(required=True, label="Имя")
 
     class Meta:
         model = get_user_model()

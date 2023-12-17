@@ -1,46 +1,42 @@
-{% extends 'base.html' %}
-{% load static %} 
- {% load widget_tweaks %}
+{% extends "registration/base.html" %}
+{% load widget_tweaks %}
 
+{% block form_place %}
 
-{% block style %}
-    <style>
-    .side-image {background-image: url('{% static "/img/cat.jpeg" %}');}
-    </style>
-    <link rel="stylesheet" href="{% static 'css/login.css' %}">
-{% endblock %}
+    <header>Вход</header>
 
+    <div class="login-form">
+        <form action="{% url 'app:login' %}" method="post">
+            {% csrf_token %}
 
-{% block content %}
-    <div class="wrapper">
-        <div class="container main">
-            <div class="row">
-                <div class="col-md-6 side-image "> </div>
-                <div class="col-md-6 right">
-                    <div class="input-box">
-                        <header>Login</header>
-                        <div class="login-form">
-                            <form action="{% url 'app:login' %}" method="post">
-                                {% csrf_token %}
-                                {% render_field form.username placeholder="Username" class="form-control"%}
-                                <span class="help-block text-danger" >{{ form.username.errors }}</span>
-                                <p></p> 
-                                {% render_field form.password placeholder="Password" class="form-control"%} 
+            {% render_field form.username placeholder="Логин" class="form-control"%}
+            <p></p> 
+            {% render_field form.password placeholder="Пароль" class="form-control"%} 
 
-                                <input type="hidden" name="next" value="{{ next }}" />
-                                <p></p>
-                                <div class="input-field"> <input type="submit" class="submit" value="Sign Up">
-                                </div>
-                                {% if form.errors %}
-                                <span class="help-block text-danger" > {{ form.non_field_errors }}
-                                {% endif %}
-                            </form>
+            <input type="hidden" name="next" value="{{ next }}" />
+            <p></p>
+            <div class="input-field"> 
+                <input type="submit" class="submit" value="Войдите">
+            </div>
+                                    
+            {% if form.errors %}
+                <div class="toast-container" style="position: fixed; bottom: 15px; left: 15px;">
+                    <div class="toast fade show">
+                        <div class="toast-header">
+                            <strong class="me-auto"><i class="bi-globe"></i> Ошибка входа </strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
                         </div>
-                        <div class="signin"> <span> No uno <a href="/register">in here</a></span> </div>
+                        <div class="toast-body bg-light text-danger">
+                            {{ form.non_field_errors }}
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            {% endif %}
+        </form>
+    </div>
+
+    <div class="signin"> 
+        <span> У вас нет аккаунта? - <a href="/register"> Зарегистрируйтесь</a></span> 
     </div>
 
 {% endblock %}

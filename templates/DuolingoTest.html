@@ -1,6 +1,6 @@
 {% extends "base.html" %} 
 {% load static %} 
-{% load crispy_forms_tags %} {% load widget_tweaks %} 
+{% load widget_tweaks %} 
 
 
 {% block style %}
@@ -11,32 +11,6 @@
   
 
 {% block content %}
-
-{% if status == "ok"%}
-<div class="toast-container" style="position: fixed; bottom: 20px; right: 20px;">
-    <div class="toast fade show">
-        <div class="toast-header">
-            <strong class="me-auto"><i class="bi-globe"></i> Вы успешно отправили сообщение</strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-        </div>
-        <div class="toast-body bg-success text-white">
-            Мы обязательно свяжемся с вами
-        </div>
-    </div>
-</div>
-{% elif status == "fail"%}
-<div class="toast-container" style="position: fixed; bottom: 20px; right: 20px;">
-    <div class="toast fade show">
-        <div class="toast-header">
-            <strong class="me-auto"><i class="bi-globe"></i> Вы неправильно заполнили форму </strong>
-            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
-        </div>
-        <div class="toast-body bg-danger text-white">
-          Попробуете ещё раз
-        </div>
-    </div>
-</div>
-{% endif %}
 
 <section class="bs-body-color text-dark p-5 text-center">
   <div class="neww-container">
@@ -263,7 +237,7 @@
 </faq>
 
 <!-- feedback -->
-<section id="Feedback">
+<section id="Feedback" class="py-3">
   <div id="multiItemExample" class="carousel carousel-dark carousel-fade slide" data-bs-ride="carousel">
     <div class="container">
       <div class="oval-container" style="display: flex; margin: auto; margin-bottom: 3rem;">
@@ -335,11 +309,11 @@
           </div>
         </div>
       </div>
-      <div class="container"> <button class="carousel-control-prev" style="padding-right: 8rem; padding-top: 8rem;" type="button" data-bs-target="#multiItemExample" data-bs-slide="prev">
+      <div class="container"> <button class="carousel-control-prev" style="padding-right: 4rem; padding-top: 10rem;" type="button" data-bs-target="#multiItemExample" data-bs-slide="prev">
               <span class="carousel-control-prev-icon " aria-hidden="true"></span>
               <span class="visually-hidden">Предыдущий</span>
           </div>
-          </button> <button class="carousel-control-next" style="padding-left: 8rem; padding-top: 8rem;" type="button" data-bs-target="#multiItemExample" data-bs-slide="next">
+          </button> <button class="carousel-control-next" style="padding-left: 4rem; padding-top: 10rem;" type="button" data-bs-target="#multiItemExample" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Следующий</span>
           </button> </div>
@@ -355,7 +329,7 @@
       <div class="col-md-6">
         <div class="container py-5">
           <h1>Форма обратной связи</h1>
-          <form method="post" novalidate> 
+          <form method="post"> 
             {% csrf_token %}
             <div class="row">
               <div class="col-md-6"> {% render_field form.name placeholder="Имя" class="form-control"%} </div>
@@ -378,5 +352,31 @@
     </div>
   </div>
 </section> 
+
+{% if status == "ok"%}
+  <div class="toast-container" style="position: fixed; bottom: 20px; right: 20px;">
+      <div class="toast fade show">
+          <div class="toast-header">
+              <strong class="me-auto"><i class="bi-globe"></i> Вы успешно отправили сообщение</strong>
+              <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+          </div>
+          <div class="toast-body bg-success text-white">
+              Мы обязательно свяжемся с вами
+          </div>
+      </div>
+  </div>
+{% elif status == "fail"%}
+  <div class="toast-container" style="position: fixed; bottom: 20px; right: 20px;">
+      <div class="toast fade show">
+          <div class="toast-header">
+              <strong class="me-auto"><i class="bi-globe"></i> Вы неправильно заполнили форму </strong>
+              <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+          </div>
+          <div class="toast-body bg-danger text-white">
+            Попробуете ещё раз
+          </div>
+      </div>
+  </div>
+{% endif %}
 
 {% endblock %}

@@ -1,27 +1,51 @@
-{% extends 'base.html' %}
-{% load static %} {% load crispy_forms_tags %}
-{% block content %}
-<div class="container py-5 row g-0">
-    <div class="col-md-3"></div>
-    <div class="col-md-6">
-    <div class="content-section">
-        <form method="POST">
-            {% csrf_token %}
-            <fieldset class="form-group">
-                <legend class="border-bottom mb-4">Регистрация</legend>
-                {{ form | crispy }}
-            </fieldset>
+{% extends "registration/base.html" %}
+{% load widget_tweaks %}
+
+{% block form_place %}
+
+    <header>Регистрация</header>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        {% for hidden in form.hidden_fields %}
+            {{ hidden }}
+        {% endfor %}
+
+        <div class="form-group">
+            {% render_field form.first_name placeholder="Имя" class="form-control"%}
             <p></p>
-            <div class="form-group">
-                <button class="btn btn-success" type="submit">Зарегистрироваться</button>
-            </div>
-        </form>
-        <div class="border-top pt-3">
-            <small class="text-muted">
-                У вас есть аккаунт? <a class="ml-2" href="/login">Войдите</a>
-            </small>
+            {% render_field form.last_name placeholder="Фамилия" class="form-control"%}
+            <p></p>
+            {% render_field form.email placeholder="Email" class="form-control"%}
+            <p></p>
+            {% render_field form.username placeholder="Придумайте логин" class="form-control"%}
+            <p></p>
+            {% render_field form.password1 placeholder="Пароль" class="form-control"%}
+            <p></p>
+            {% render_field form.password2 placeholder="Подтверждение пароля" class="form-control"%}
         </div>
+        <p></p>
+              
+        {% if form.errors %}
+            <div class="toast-container" style="position: fixed; bottom: 15px; left: 15px;">
+                <div class="toast fade show">
+                    <div class="toast-header">
+                        <strong class="me-auto"><i class="bi-globe"></i> Ошибка регистрации </strong>
+                        <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+                    </div>
+                    <div class="toast-body bg-light text-danger">
+                        <span class="help-block">{{ form.errors }}</span>
+                    </div>
+                </div>
+            </div>
+        {% endif %} 
+
+        <div class="input-field"> <input type="submit" class="submit" value=" Регистрация ">
+    
+    </form>
+
+    <div class="signin"> 
+        <span> У вас есть аккаунт? - <a href="/login"> Войдите </a></span> 
     </div>
-    </div>
-</div>
-{% endblock content %}
+{% endblock%}

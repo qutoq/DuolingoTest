@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %} 
+
+
+{% block style %}
+  <style>
+    .side-image {background-image: url('{% static "/img/cat.jpeg" %}');}
+  </style>
+  <link rel="stylesheet" href="{% static 'css/login.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="wrapper">
+    <div class="container main">
+        <div class="row">
+            <div class="col-md-6 side-image "> </div>
+            <div class="col-md-6 right">
+                <div class="input-box">
+                    {% block form_place %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate, login, get_user_model
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
 from django.utils import timezone
 
-from .forms import UserRegistrationForm, SetPassForm, ContactForm
+from .forms import UserRegistrationForm, ContactForm
 from .models import Post, Profile, Course
 
 
@@ -54,12 +55,12 @@ def register(request):
 def password_change(request):
     user = request.user
     if request.method == 'POST':
-        form = SetPassForm(user, request.POST)
+        form = PasswordChangeForm(user, request.POST)
         if form.is_valid():
             form.save()
             return redirect('app:login')
-
-    form = SetPassForm(user)
+    else:
+        form = PasswordChangeForm(user)
     return render(request, 'registration/password_change.html', {'form': form})
 
 
@@ -67,7 +68,7 @@ def password_change(request):
 def profile(request):
     username = request.user.username
     user = get_user_model().objects.filter(username=username).first()
-    return render(request, 'registration/profile.html', {"user": user})
+    return render(request, 'profile.html', {"user": user})
 
 
 
