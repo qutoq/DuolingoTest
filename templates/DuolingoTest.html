@@ -1,498 +1,382 @@
-{% load static %}
-{% load crispy_forms_tags %}
-{% load widget_tweaks %}
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/English.css' %}">
-    <title>Duolingo Test</title>
-</head>
-<body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm fixed-top" style="background-color: #7ECBBC;">
-        <div class="container">
-           <a href="#" class="navbar-brand">Кошколого</a>
-           <button class="navbar-toggler" type="'button" data-bs-toggle="collapse" data-bs-target="#navmenu"><span class="navbar-toggler-icon"></span></button>
-           <div class="collapse navbar-collapse" id="navmenu">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                    <a href="#questions" class="nav-link">FAQ</a>
-                </li>                
-                <li class="nav-item">
-                    <a href="#Course" class="nav-link">Записаться на курс</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#Feedback" class="nav-link">Отзывы</a>
-                </li>
-                <li class="nav-item">
-                    <a href="#Contact" class="nav-link">Контакты центров</a>
-                </li>
-                <!-- <li class="nav-item">
-                  <div class="selected-lang">
-                    <a href="#" class="nav-link">Контакты центров</a>
-                  </div> -->
-              </li>
-                <li class="nav-item">
-                    <button class="btn btn-sm" style="background-color: #FFDA73;"><a href="/login" class="nav-link">Войти</a></button>
-                </li>
-                <span class="user text-white">
-                    {% if request.user.is_authenticated %}
-                        <i class="bi bi-person"></i>
-                        <a href="{% url 'app:profile' %}"> {{ request.user.username }}</a>
-                        <i class="bi bi-box-arrow-left"></i>
-                        <a href="{% url 'app:logout' %}">Выйти</a>
-                    {% else %}
-                        <i class="bi bi-box-arrow-right"></i>
-                        <a href="{% url 'app:login' %}">Войти</a>
-                    {% endif %}
-                </span>
-            </ul>
-           </div> 
-        </div>       
-    </nav>
-    <!-- Showcase -->
- 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Grid Layout</title>
-    <style>
-        .neww-container {
-            display: grid;
-            grid-template-columns: 3fr 3fr;
-            grid-template-rows: auto;
-            grid-gap: 2rem;
-        }
+{% extends "base.html" %} 
+{% load static %} 
+{% load crispy_forms_tags %} {% load widget_tweaks %} 
 
-        .tab {
-            width: 100%;
-            height: 100%;
-            padding: 1rem;
-            box-sizing: border-box;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
 
-        .tab:nth-child(1) {
-            grid-row: 1;
-            grid-column: 1;
-        }
-
-        .tab:nth-child(2) {
-            grid-row: 1 ;
-            grid-column: 2;
-        }
-
-        .tab img {
-            max-width: 100%;
-            height: auto;
-        }
-        @media screen and (max-width: 768px) {
-        .tab:nth-child(1) {
-          grid-row: 1;
-          grid-column: 1 / span 2;
-        }
-
-        .tab:nth-child(2) {
-          grid-row: 2;
-          grid-column: 1 / span 2;
-        }
-    </style>
-
-    <section class="bs-body-color text-dark p-5 text-center">
-        <div class="neww-container">
-            <div class="tab mb-3">
-                <div class="content">
-                    <h1>Курсы для подготовки к </h1>
-                    <h1><span class="text-success">Duolingo English Test</span></h1>
-                    <p class="lead my-4">
-                        Поступи в ВУЗ мечты с Duolingo English Test
-                    </p>
-                    <a href="#Course"><button class="btn btn-lg" style="background-color: #FFDA73;">Записаться бесплатно</button></a>
-                </div>
-            </div>
-            <div class="tab mb-3">
-                <img class="img-fluid d-none d-sm-block" src='{% static "/img/thecats.PNG" %}' alt="">
-            </div>
-        </div>
-    </section>
+{% block style %}
+  <link href="{% static 'css/ve.css' %}" rel="stylesheet">
+  <link href="{% static 'css/duolingo.css' %}" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+{% endblock %}
   
 
-    <!-- cards -->
-    <info>
-        <div class="h1 mb-5">
-          О НАС
+{% block content %}
+
+{% if status == "ok"%}
+<div class="toast-container" style="position: fixed; bottom: 20px; right: 20px;">
+    <div class="toast fade show">
+        <div class="toast-header">
+            <strong class="me-auto"><i class="bi-globe"></i> Вы успешно отправили сообщение</strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
         </div>
-        <style>
-          .card {
-            max-width: 18rem;
-            margin-bottom: 1rem;
-          }
-        
-          @media screen and (max-width: 768px) {
-            .new-container {
-              display: grid;
-              grid-template-columns: 1fr;
-              grid-template-rows: auto;
-              grid-gap: 1rem;
-            }
-        
-            .card {
-              width: calc(100% - 2rem);
-              grid-column: auto;
-            }
-          }
-        
-          @media screen and (min-width: 768px) {
-            .new-container {
-              display: grid;
-              grid-template-columns: 2fr 1fr 1fr;
-              grid-template-rows: 1fr 2fr;
-              grid-gap: 1rem;
-            }
-        
-            .card:nth-child(1) {
-              grid-row: 1;
-              grid-column: 1 / span 2;
-            }
-        
-            .card:nth-child(2) {
-              grid-row: 1;
-              grid-column: 3;
-            }
-        
-            .card:nth-child(3) {
-              grid-row: 2;
-              grid-column: 1;
-            }
-        
-            .card:nth-child(4) {
-              grid-row: 2;
-              grid-column: 2 / span 2;
-            }
+        <div class="toast-body bg-success text-white">
+            Мы обязательно свяжемся с вами
+        </div>
+    </div>
+</div>
+{% elif status == "fail"%}
+<div class="toast-container" style="position: fixed; bottom: 20px; right: 20px;">
+    <div class="toast fade show">
+        <div class="toast-header">
+            <strong class="me-auto"><i class="bi-globe"></i> Вы неправильно заполнили форму </strong>
+            <button type="button" class="btn-close" data-bs-dismiss="toast"></button>
+        </div>
+        <div class="toast-body bg-danger text-white">
+          Попробуете ещё раз
+        </div>
+    </div>
+</div>
+{% endif %}
 
-            .card:nth-child(5) {
-              grid-row: 3;
-              grid-column: 1 / span 3;
-            }
-          }
-        
-          .card {
-            width: 100%; /* Ширина карточки будет равна ширине ячейки */
-            height: 100%; /* Высота карточки будет равна высоте ячейки */
-            max-width: 100%; /* Максимальная ширина равна ширине ячейки */
-            max-height: 100%; /* Максимальная высота равна высоте ячейки */
-            padding: 1rem; /* Добавляем внутренний отступ */
-            box-sizing: border-box; /* Учитываем отступы в размере элемента */
-          }
-        
-          .new-container {
-            display: grid;
-            grid-template-columns: 1fr 1fr 1fr;
-            grid-template-rows: 1fr 1fr;
-            grid-gap: 1rem;
-          }
-        
-          .card:nth-child(1) {
-            grid-row: 1;
-            grid-column: 1 / span 2;
-            background-color: #8D95D2;
-          }
-        
-          .card:nth-child(2) {
-            grid-row: 1;
-            grid-column: 3;
-            background-color: #7ECBBC;
-          }
-        
-          .card:nth-child(3) {
-            grid-row: 2;
-            grid-column: 2 / span 2;
-            background-color: #CBF397;
-          }
-        
-          .card:nth-child(4) {
-            grid-row: 2;
-            grid-column: 1;
-            background-color: #FFE49E;
-          }
+<section class="bs-body-color text-dark p-5 text-center">
+  <div class="neww-container">
+    <div class="tab mb-3">
+      <div class="content">
+        <h1>Курсы для подготовки к </h1>
+        <h1><span class="text-success">Duolingo English Test</span></h1>
+        <p class="lead my-4"> Поступи в ВУЗ мечты с Duolingo English Test </p> <a href="#Course"><button class="btn btn-lg" style="background-color: #FFDA73;">Записаться бесплатно</button></a> 
+      </div>
 
-          .card:nth-child(5) {
-            grid-row: 3;
-            grid-column: 1 / span 3;
-            background-color: #FFC49E;
-          }
-        
-          .special-card {
-            grid-column: span 2;
-          }
-        
-          /* Уменьшаем размер шрифта для контента внутри карточки */
-          .card-body {
-            font-size: 14px;
-          }
+    </div>
+    <div class="tab mb-3"> <img class="img-fluid d-none d-sm-block" src='{% static "/img/thecats.PNG" %}' alt=""> </div>
+  </div>
+</section>
 
-          .container-wrapper {
-            border: 1rem ; /* Ширина и цвет границы */
-            padding-top: 1rem;
-            padding-bottom: 2rem;
-            padding-left: 8rem;
-            padding-right: 8rem; /* Отступ вокруг границы */
-          }
-        </style>
-        
-        <div class="container-wrapper">
-          <div class="new-container">
-            <div class="card mb-3" style="max-width: 2fr; background-color: #8D95D2;">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Primary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+<!-- cards -->
+<info>
+  <!-- about -->
+  <div class="container-wrapper">
+    <div class="oval-container" style="display: flex; margin: auto; margin-bottom: 3rem;">
+      <div class="oval">
+        <h2 class="center">О нас</h2>
+      </div>
+    </div>
+    <div class="new-container">
+      <div class="card mb-3" style="max-width: 2fr; background-color: #8D95D2;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h5 class="card-title">Primary card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+      <div class="card mb-3" style="max-width: 2fr; background-color: #7ECBBC;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h5 class="card-title">Secondary card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+      <div class="card mb-3" style="max-width: 2fr; background-color: #CBF397;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h5 class="card-title">Secondary card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+      <div class="card mb-3" style="max-width: 2fr; background-color: #FFE49E;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h5 class="card-title">Secondary card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+      <div class="card mb-3" style="max-width: 2fr; background-color: #FFC49E;">
+        <div class="card-header">Header</div>
+        <div class="card-body">
+          <h5 class="card-title">Secondary card title</h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</info>
+
+<!-- teachers -->
+<section>
+  <div class="oval-container" style="display: flex; margin: auto; margin-bottom: 3rem;">
+    <div class="oval">
+      <h3 class="text-center">Преподаватели</h3>
+    </div>
+  </div>
+  <div id="multiItemExample2" class="carousel carousel-dark carousel-fade slide" data-bs-ride="carousel">
+    <div class="container" style="display: flex;">
+      <div class="carousel-inner" style="display: flex; margin: auto;">
+        <div class="carousel-item active" data-bs-interval="5000">
+          <div class="row row-cols-1 row-cols-sm-1 row-cols-lg-4 g-4">
+            <div class="col">
+              <div class="card" style="width: auto; height:auto; background-color: #FFE49E;"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-header">Имя</h5>
+                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                </div>
               </div>
             </div>
-            <div class="card mb-3" style="max-width: 2fr; background-color: #7ECBBC;">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="col">
+              <div class="card" style="width: auto; height:auto; background-color: #CBF397;"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-header">Имя</h5>
+                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                </div>
               </div>
             </div>
-            <div class="card mb-3" style="max-width: 2fr; background-color: #CBF397;">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="col">
+              <div class="card" style="width: auto; height:auto; background-color: #50B09D;"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-header">Имя</h5>
+                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                </div>
               </div>
             </div>
-            <div class="card mb-3" style="max-width: 2fr; background-color: #FFE49E;">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div>
-            <div class="card mb-3" style="max-width: 2fr; background-color: #FFC49E;">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="col">
+              <div class="card" style="width: auto; height:auto; background-color: #FFDA73"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-header">Имя</h5>
+                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-        
-        
-        
-        
-              
-            <!-- <div class="card text-bg-secondary mb-3" style="max-width: 18rem; background-color: #FFC49E;">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-            </div> -->
-            <!-- <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <div class="carousel-item" data-bs-interval="5000">
+          <div class="row row-cols-1 row-cols-sm-1 row-cols-lg-4 g-4">
+            <div class="col">
+              <div class="card" style="width: auto; height: auto; background-color: #7ECBBC;"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-header">Имя</h5>
+                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                </div>
               </div>
             </div>
-            <div class="card text-bg-secondary mb-3" style="max-width: 18rem;">
-              <div class="card-header">Header</div>
-              <div class="card-body">
-                <h5 class="card-title">Secondary card title</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            <div class="col">
+              <div class="card" style="width: auto; height: auto; background-color: #8D95D2"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-header">Имя</h5>
+                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                </div>
               </div>
-            </div> -->
-             
+            </div>
+            <div class="col">
+              <div class="card" style="width: auto; height: auto; background-color: #FFE49E"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-header">Имя</h5>
+                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" style="width: auto; height: auto; background-color: #FFC49E;"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+                <div class="card-body">
+                  <h5 class="card-header">Имя</h5>
+                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-    </info>
-    <faq>
-    <section id="questions" class="p-5">
-        <div class="container">
-          <div class="h1 mb-5">
-            Frequently asked questions
+      </div> 
+      <button class="carousel-control-prev" style="padding-right: 4rem; padding-top: 4rem;" type="button" data-bs-target="#multiItemExample2" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon d-none d-sm-block" aria-hidden="true"></span>
+        <span class="visually-hidden">Предыдущий</span>
+      </button> <button class="carousel-control-next" style="padding-left: 4rem; padding-top: 4rem;" type="button" data-bs-target="#multiItemExample2" data-bs-slide="next">
+        <span class="carousel-control-next-icon d-none d-sm-block" aria-hidden="true"></span>
+        <span class="visually-hidden">Следующий</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<faq>
+  <section id="questions">
+    <div class="container-sm">
+      <div class="oval-container" style="display: flex; margin: auto; margin-bottom: 3rem;">
+        <div class="oval">
+          <h2 style="align-content: center;">FAQ</h2>
+        </div>
+      </div>
+      <div class="accordion accordion-flush" id="accordionFlushExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="background-color: #7ECBBC;">
+                  Как я могу подготовиться к Duolingo English Test?
+                </button> </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body"> Наш курс предлагает специальные материалы и уроки, разработанные для помощи ученикам в подготовке к тесту DET. Мы предоставляем практические задания, тесты и ресурсы, чтобы помочь вам улучшить свои навыки английского языка.</div>
           </div>
-          <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="background-color: #7ECBBC;">
-                  вопрос 1
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo"> 
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" style="background-color: #CBF397;">
+                Какие преимущества я получу, проходя курс подготовки к Duolingo English Test?
+                </button> </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body"> Наш курс предлагает структурированный план обучения, который поможет вам освоить ключевые навыки, необходимые для успешного сдачи теста DET. Вы также получите обратную связь от опытных преподавателей и возможность практиковать навыки на реалистических практических заданиях.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingThree"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" style="background-color: #7ECBBC;">
+                  Каковы требования для участия в курсах подготовки к Duolingo English Test?
+                </button> </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">Требования для курсов подготовки могут в зависимости от конкретного курса. Однако, обычно требуется базовое знание английского языка и доступ к компьютеру с подключением к интернету.</div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingFour"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseThree" style="background-color: #CBF397;;">
+                  Как я смогу отслеживать свой прогресс во время прохождения курсов?
+                </button> </h2>
+          <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+            <div class="accordion-body">У Вас будет возможность отслеживать свой прогресс через нашу платформу обучения. Вы сможете видеть результаты тестов, пройденные уроки и получать обратную связь от преподавателей.</div>
+          </div>
+        </div>
+        <!-- <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingFive">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseThree" style="background-color: #7ECBBC;">
+                  вопрос 5
                 </button>
               </h2>
-              <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body"> ляляляляля</div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" style="background-color: #CBF397;">
-                  вопрос 2
-                </button>
-              </h2>
-              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body"> лялялялляля</div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" style="background-color: #7ECBBC;">
-                  вопрос 3
-                </button>
-              </h2>
-              <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+              <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
                 <div class="accordion-body">лялялялялялляля</div>
               </div>
             </div>
-          </div>
-        </div>
-    </section>
-    </faq>
-    <section id="Feedback" class="p-5 bs-body-color">
-      <div class="container">
-        <h1 class="text-center mb-5">Отзывы</h1>
-        <div class="row g-4" style="justify-content: space-around;">
-          <div class="card mb-3" style="max-width: 18rem; background-color: #FFE49E;">
-            <div class="card-header">Имя</div>
-            <div class="card-body">
-              <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
-              <p class="card-text">лялялялляля</p>
-            </div>
-          </div>
-          <div class="card mb-3" style="max-width: 18rem; background-color: #FFE49E;">
-            <div class="card-header">Имя</div>
-            <div class="card-body">
-              <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
-              <p class="card-text">лялялялляля</p>
-            </div>
-          </div>
-          <div class="card mb-3" style="max-width: 18rem; background-color: #FFE49E;">
-            <div class="card-header">Имя</div>
-            <div class="card-body">
-              <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
-              <p class="card-text">ляляляляля</p>
-            </div>
-          </div>
-          <div class="card mb-3" style="max-width: 18rem; background-color: #FFE49E;">
-            <div class="card-header">Имя</div>
-            <div class="card-body">
-              <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
-              <p class="card-text">ляляляляля</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- menu nav -->
-    <!-- <section id="Course" class="p-5"></section>
-    <section id="Contact" class="p-5"></section> -->
-
-    <!-- form -->
-    <section id="Course" class="p-5">
-      <div class="container">
-        <h1 class="text-center mb-5">Форма обратной связи</h1>
-        <div class="input-group">
-          <span class="input-group-text">Имя и фамилия</span>
-          <input type="text" aria-label="Имя" class="form-control" placeholder="Имя">
-          <input type="text" aria-label="Фамилия" class="form-control" placeholder="Фамилия">
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlInput1" class="form-label">Адрес электронной почты</label>
-          <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-        </div>
-        <div class="mb-3">
-          <label for="exampleFormControlTextarea1" class="form-label">Комментарий</label>
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-        </div>
-      </div>
-    </section>
-
-
-<div class = 'container bg-white'>
-    <div class="row g-0">
-        <div class="col-lg-6">
-            <img src="{% static 'img/feedback.svg' %}">
-        </div>
-        <div class="col-lg-6">
-            <div class="container py-5">
-                <h1>Форма обратной связи</h1>
-                <form method="post" novalidate>
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-6">
-                            {{ form.name|as_crispy_field }}
-                        </div>
-                        <div class="col-6">
-                            {{ form.email|as_crispy_field }}
-                        </div>
-                    </div>
-                        {{ form.company|as_crispy_field }}
-                    <p></p>
-                        {{ form.message|as_crispy_field }}
-                    <p></p>
-                  <button type="submit" class="btn btn-success">Отправить сообщение</button>
-                </form>
-            </div>
-        </div>
+            <div class="accordion-item">
+              <h2 class="accordion-header" id="flush-headingSix">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseThree" style="background-color: #CBF397;">
+                  вопрос 6
+                </button>
+              </h2>
+              <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body" style="background-color: #7ecbbc4b">лялялялялялляля</div>
+              </div>
+            </div> --></div>
     </div>
-</div>
+  </section>
+</faq>
 
-
-
-<div class = 'container bg-white'>
-    <div class="row g-0">
-        <div class="col-lg-6">
-            <img src="{% static 'img/feedback.svg' %}">
+<!-- feedback -->
+<section id="Feedback">
+  <div id="multiItemExample" class="carousel carousel-dark carousel-fade slide" data-bs-ride="carousel">
+    <div class="container">
+      <div class="oval-container" style="display: flex; margin: auto; margin-bottom: 3rem;">
+        <div class="oval">
+          <h2 class="text-center">Отзывы</h2>
         </div>
-        <div class="col-lg-6">
-            <div class="container py-5">
-                <h1>Форма обратной связи</h1>
-                <form method="post" novalidate>
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-6">
-                            {% render_field form.name placeholder="name" class="form-control"%}
-                        </div>
-                        <div class="col-6">
-                            {% render_field form.email placeholder="Email" class="form-control"%}
-                        </div>
-                    </div>
-                        {% render_field form.company placeholder="Company" class="form-control"%}
-                    <p></p>
-                        {% render_field form.message placeholder="Message" class="form-control"%}
-                    <p></p>
-                  <button type="submit" class="btn btn-success">Отправить сообщение</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-    <!-- <footer> -->
-      <!-- <div class="container" style="background-color: #7ECBBC; ">
-        <div class="d-flex justify-content-between align-items-center mx-auto py-4 flex-wrap" style="width: 80%;">
-          <a href="/#" class="d-flex align-items-center p-0 text-dark">
-            <img src="img/cat.jpeg" alt="" style="width: 50px;"/>
-              <span class="ms-4 h5 font-weight-bold">Duoligo English Test Course</span>
-          </a>
-          <small>&copy; Duoligo English Test Course, 2023. All rights reserved.</small>
-        </div>
-      </div>       -->
-    <footer class="p-5 text-center position-relative mx-auto py-4" style="background-color: #7ECBBC;">
-      <div class="container">
-        <p class="lead">&copy; Duoligo English Test Course, 2023. All rights reserved.</p>
       </div>
-    </footer>
-    <!-- </footer> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-</body>
-</html>
+      <div class="carousel-inner" style="display:flex;">
+        <div class="carousel-item active" data-bs-interval="5000">
+          <div class="row g-3">
+            <div class="col">
+              <div class="card" style="width: auto; height: auto; background-color: #FFC49E;">
+                <div class="card-header">Имя</div>
+                <div class="card-body">
+                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
+                  <p class="card-text">лялялялляля</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" style=" width: auto; height: auto;background-color: #7ECBBC;">
+                <div class="card-header">Имя</div>
+                <div class="card-body">
+                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
+                  <p class="card-text">лялялялляля</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" style="width: auto; height: auto; background-color: #8D95D2">
+                <div class="card-header">Имя</div>
+                <div class="card-body">
+                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
+                  <p class="card-text">лялялялляля</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item" data-bs-interval="5000">
+          <div class="row g-3">
+            <div class="col">
+              <div class="card" style="width: auto; height: auto; background-color: #50B09D">
+                <div class="card-header">Имя</div>
+                <div class="card-body">
+                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
+                  <p class="card-text">лялялялляля</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" style="width: auto; height: auto; background-color: #FFE49E;">
+                <div class="card-header">Имя</div>
+                <div class="card-body">
+                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
+                  <p class="card-text">лялялялляля</p>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card" style="width: auto; height: auto; background-color: #CBF397;">
+                <div class="card-header">Имя</div>
+                <div class="card-body">
+                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
+                  <p class="card-text">лялялялляля</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container"> <button class="carousel-control-prev" style="padding-right: 8rem; padding-top: 8rem;" type="button" data-bs-target="#multiItemExample" data-bs-slide="prev">
+              <span class="carousel-control-prev-icon " aria-hidden="true"></span>
+              <span class="visually-hidden">Предыдущий</span>
+          </div>
+          </button> <button class="carousel-control-next" style="padding-left: 8rem; padding-top: 8rem;" type="button" data-bs-target="#multiItemExample" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Следующий</span>
+          </button> </div>
+    </div>
+  </div>
+</section>
+
+<!-- form -->
+<section id="Course">
+  <div class='container'>
+    <div class="row g-0">
+      <div class="col-md-6"> <img src="{% static 'img/feedback.svg' %}"> </div>
+      <div class="col-md-6">
+        <div class="container py-5">
+          <h1>Форма обратной связи</h1>
+          <form method="post" novalidate> 
+            {% csrf_token %}
+            <div class="row">
+              <div class="col-md-6"> {% render_field form.name placeholder="Имя" class="form-control"%} </div>
+              <div class="col-md-6"> {% render_field form.surname placeholder="Фамилия" class="form-control"%} </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6"> <span class="help-block text-danger" >{{ form.name.errors }}</span> </div>
+              <div class="col-md-6"> <span class="help-block text-danger" >{{ form.surname.errors }}</span> </div>
+            </div>
+            <p></p>            
+            {% render_field form.email placeholder="Email" class="form-control"%}
+            <span class="help-block text-danger" >{{ form.email.errors }}</span>
+            <p></p> 
+            {% render_field form.message placeholder="Напишите тут ваше сообщение" class="form-control"%}
+            <span class="help-block text-danger" >{{ form.message.errors }}</span>
+            <p></p> 
+            <button type="submit" class="btn" style="background-color: #FFDA73;">Отправить сообщение</button></form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> 
+
+{% endblock %}

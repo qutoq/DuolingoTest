@@ -1,0 +1,156 @@
+
+      a {
+        white-space: nowrap;
+      }
+
+      h1 {
+        white-space: nowrap;
+      }
+
+      h2 {
+        white-space: nowrap;
+      }
+
+
+
+        .neww-container {
+            display: grid;
+            grid-template-columns: 3fr 3fr;
+            grid-template-rows: auto;
+            grid-gap: 2rem;
+        }
+
+        .tab {
+            width: 100%;
+            height: 100%;
+            padding: 1rem;
+            box-sizing: border-box;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tab:nth-child(1) {
+            grid-row: 1;
+            grid-column: 1;
+        }
+
+        .tab:nth-child(2) {
+            grid-row: 1 ;
+            grid-column: 2;
+        }
+
+        .tab img {
+            max-width: 100%;
+            height: auto;
+        }
+        @media screen and (max-width: 768px) {
+        .tab:nth-child(1) {
+          grid-row: 1;
+          grid-column: 1 / span 2;
+        }
+
+        .tab:nth-child(2) {
+          grid-row: 2;
+          grid-column: 1 / span 2;
+        }
+      }
+
+
+
+          .card {
+            max-width: 18rem;
+            margin-bottom: 1rem;
+          }
+        
+          .card {
+            width: 100%; /* Ширина карточки будет равна ширине ячейки */
+            height: 100%; /* Высота карточки будет равна высоте ячейки */
+            max-width: 100%; /* Максимальная ширина равна ширине ячейки */
+            max-height: 100%; /* Максимальная высота равна высоте ячейки */
+            padding: 1rem; /* Добавляем внутренний отступ */
+            box-sizing: border-box; /* Учитываем отступы в размере элемента */
+          }
+        
+          .new-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            grid-gap: 1rem;
+          }
+        
+          .card:nth-child(1) {
+            grid-row: 1;
+            grid-column: 1 / span 2;
+            background-color: #8D95D2;
+          }
+        
+          .card:nth-child(2) {
+            grid-row: 1;
+            grid-column: 3;
+            background-color: #7ECBBC;
+          }
+        
+          .card:nth-child(3) {
+            grid-row: 2;
+            grid-column: 2 / span 2;
+            background-color: #CBF397;
+          }
+        
+          .card:nth-child(4) {
+            grid-row: 2;
+            grid-column: 1;
+            background-color: #FFE49E;
+          }
+
+          .card:nth-child(5) {
+            grid-row: 3;
+            grid-column: 1 / span 3;
+            background-color: #FFC49E;
+          }
+        
+          .special-card {
+            grid-column: span 2;
+          }
+        
+          /* Уменьшаем размер шрифта для контента внутри карточки */
+          .card-body {
+            font-size: 14px;
+          }
+
+          .container-wrapper {
+            border: 1rem ; /* Ширина и цвет границы */
+            padding-top: 1rem;
+            padding-bottom: 2rem;
+            padding-left: 5rem;
+            padding-right: 5rem; /* Отступ вокруг границы */
+          }
+
+          @media screen and (max-width: 768px) {
+         
+         .card:nth-child(1) {
+           grid-row: 1;
+           grid-column: 1 / span 3;
+          }
+       
+         .card:nth-child(2) {
+           grid-row: 2;
+           grid-column: 1 / span 3;
+          }
+       
+         .card:nth-child(3) {
+           grid-row: 3;
+           grid-column: 1 / span 3;
+          }
+       
+         .card:nth-child(4) {
+           grid-row: 4;
+           grid-column: 1 / span 3;
+          }
+
+         .card:nth-child(5) {
+           grid-row: 5;
+           grid-column: 1 / span 3;
+          }
+        }
+  

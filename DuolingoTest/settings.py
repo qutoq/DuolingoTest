@@ -15,6 +15,8 @@ SECRET_KEY = "django-insecure-88t(cdifl=4z+9e-a1kz#(0+r=cx0=)zsyyrk)_t=a8761)dqh
 DEBUG = True
 
 ALLOWED_HOSTS = ["*"]  # for debug
+#CSRF_TRUSTED_ORIGINS = [""]
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 LOGIN_REDIRECT_URL = '/profile'
 

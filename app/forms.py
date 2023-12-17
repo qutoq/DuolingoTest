@@ -1,20 +1,21 @@
 from django import forms
 from django.contrib.auth.forms import SetPasswordForm, UserCreationForm
 from django.contrib.auth import get_user_model
-from .models import  Contact
+from .models import Contact
 
 
 class ContactForm(forms.ModelForm):
     class Meta:
         model = Contact
-        fields = ['name', 'email', 'company', 'message']
+        fields = ['name', 'surname', 'email', 'message']
         widgets = {
             'message': forms.Textarea(
                 attrs={
-                    'placeholder': 'Напишите тут ваше сообщение'
+                    'rows': 7
                 }
             )
         }
+
 
 class SetPassForm(SetPasswordForm):
     class Meta:

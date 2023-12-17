@@ -9,6 +9,7 @@ from .models import Post, Profile, Course
 
 def main(request):
     courses = Course.objects.all()
+    status = "norm"
     if request.method == "POST":
         form = ContactForm(request.POST)
         if form.is_valid():
@@ -16,9 +17,12 @@ def main(request):
             msg.timeAdd = timezone.now()
             msg.save()
             form = ContactForm()
+            status = "ok"
+        else:
+            status = "fail"
     else:
         form = ContactForm()
-    return render(request, "DuolingoTest.html", {"form": form, "courses": courses})
+    return render(request, "DuolingoTest.html", {"form": form, "courses": courses, "status": status})
 
 
 def post_list(request):
