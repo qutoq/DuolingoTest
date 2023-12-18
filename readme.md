@@ -62,8 +62,14 @@ app/urls.py
 
 ## Локальный запуск 
 `git clone`
+
 `pip install -r requirements.txt`
+
+`python manage.py migrate --run-syncdb`
+
 `python manage.py runserver 8000`
+
+
 
 ## Планы
 1. Адаптировать сайт для мобильных устройств

@@ -34,7 +34,6 @@ INSTALLED_APPS = [
     "widget_tweaks"
 ]
 
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -108,7 +107,6 @@ TIME_ZONE = "Europe/Moscow"
 USE_I18N = True
 
 USE_TZ = True
-
 
 
 if DEBUG:

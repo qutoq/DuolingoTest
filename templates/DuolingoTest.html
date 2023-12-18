@@ -6,6 +6,14 @@
 {% block style %}
   <link href="{% static 'css/ve.css' %}" rel="stylesheet">
   <link href="{% static 'css/duolingo.css' %}" rel="stylesheet">
+  <style>
+    @font-face {
+        font-family: "Lack";
+        font-style: normal;
+        font-weight: 900;
+        src: url('{% static "/fonts/Lack-Regular.otf" %}') format("otf"),
+      }
+  </style>
 {% endblock %}
   
 
