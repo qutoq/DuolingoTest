@@ -6,14 +6,6 @@
 {% block style %}
   <link href="{% static 'css/ve.css' %}" rel="stylesheet">
   <link href="{% static 'css/duolingo.css' %}" rel="stylesheet">
-  <style>
-    @font-face {
-        font-family: "Lack";
-        font-style: normal;
-        font-weight: 900;
-        src: url('{% static "/fonts/Lack-Regular.otf" %}') format("otf"),
-      }
-  </style>
 {% endblock %}
   
 
@@ -25,69 +17,86 @@
       <div class="content">
         <h1>Курсы для подготовки к </h1>
         <h1><span class="text-success">Duolingo English Test</span></h1>
-        <p class="lead my-4"> Поступи в ВУЗ мечты с Duolingo English Test </p> <a href="#Course"><button class="btn btn-lg" style="background-color: #FFDA73;">Записаться бесплатно</button></a> 
+        <p class="lead my-4"> Поступи в ВУЗ мечты с Duolingo English Test </p> <a href="#Course"><button class="btn btn-lg" style="background-color: #FFDA73; text-align: center; font-style: italic;">Записаться бесплатно</button></a> 
       </div>
 
     </div>
-    <div class="tab mb-3"> <img class="img-fluid d-none d-sm-block" src='{% static "/img/thecats.PNG" %}' alt=""> </div>
+    <div class="tab mb-3"> <img class="img-fluid d-none d-sm-block" src='{% static "/img/Frame.png" %}' alt=""> </div>
   </div>
 </section>
 
-<!-- cards -->
-<info>
-  <!-- about -->
-  <div class="container-wrapper">
-    <div class="oval-container" style="display: flex; margin: auto; margin-bottom: 3rem;">
-      <div class="oval">
-        <h2 class="center">О нас</h2>
-      </div>
-    </div>
-    <div class="new-container">
-      <div class="card mb-3" style="max-width: 2fr; background-color: #8D95D2;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Primary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card mb-3" style="max-width: 2fr; background-color: #7ECBBC;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Secondary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card mb-3" style="max-width: 2fr; background-color: #CBF397;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Secondary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card mb-3" style="max-width: 2fr; background-color: #FFE49E;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Secondary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-      <div class="card mb-3" style="max-width: 2fr; background-color: #FFC49E;">
-        <div class="card-header">Header</div>
-        <div class="card-body">
-          <h5 class="card-title">Secondary card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</info>
 
-<!-- teachers -->
-<section>
-  <div class="oval-container" style="display: flex; margin: auto; margin-bottom: 3rem;">
-    <div class="oval">
-      <h3 class="text-center">Преподаватели</h3>
+
+
+<!-- cards -->
+<section id="About">
+  <!-- about -->
+  <div class="container">
+    <div class="container py-3">
+      <h2 class="text-center">О нас</h2>
     </div>
+    
+
+      <div class="row mb-3">
+
+        <div class="col-lg-8">
+          <div class="container">
+          <div class="row" style="min-height: 10rem;">
+            <div class="card" style="background-color: #7ECBBC;">
+              <div class="card-body">
+                <h5 class="card-title">Purrrfect Language Academy</h5>
+                <p class="card-text">
+                Это школа подготовки к DET
+                - быстрому, удобному и доступному экзамену по английскому языку, признанному более 4500 ВУЗами мира
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="row" style="height: 8rem;">
+            <div class="card" style="background-color: #FFC49E;">
+              <div class="card-body">
+                <h5 class="card-title">Где нас искать</h5>
+                <p class="card-text">
+                Занятия проходят очно (оффлайн).
+                Территориальное расположение - Узбекистан.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        </div>
+
+        <!-- style="white-space: pre-line" -->
+        <div class="col-lg-4" style="height: 18rem;">
+            
+            <div class="card" style="background-color: #CBF397;">
+              <div class="card-body">
+                <h5 class="card-title">С нами ты сможешь</h5>
+                <p class="card-text">
+                  <li>оценить свой уровень подготовки</li>
+                  <li>разобраться в структуре экзамена</li>
+                  <li>найти слабые места</li>
+                  <li>выстроить план обучения</li>
+                  <li>улучшить знания английского</li>
+                  <li>провести время весело и с пользой!</li>
+                </p>
+              </div>
+            </div>
+
+        </div>
+
+     </div>
+
+  </div>
+</section>
+
+
+<p></p>
+<!-- teachers -->
+<section id="Teachers">
+  <div class="container py-3">
+    <h2 class="text-center">Преподаватели</h2>
   </div>
   <div id="multiItemExample2" class="carousel carousel-dark carousel-fade slide" data-bs-ride="carousel">
     <div class="container" style="display: flex;">
@@ -95,74 +104,53 @@
         <div class="carousel-item active" data-bs-interval="5000">
           <div class="row row-cols-1 row-cols-sm-1 row-cols-lg-4 g-4">
             <div class="col">
-              <div class="card" style="width: auto; height:auto; background-color: #FFE49E;"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+              <div class="card" style="width: auto; height:33rem; background-color: #FFE49E;"> <img src='{% static "/img/thecats.PNG" %}' style="max-width:18em;" class="center" alt="">
                 <div class="card-body">
-                  <h5 class="card-header">Имя</h5>
-                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                  <h5 class="card-title">Котофей Котофеевич Рыбов</h5>
+                  <p class="card-text">
+ Кандидат хвостатых наук. Стаж преподавания - 10 кошачьих лет. Средний результат учеников - 150 баллов DET.
+Эффективно подготовит к экзамену, поделится знаниями, полезными не только для теста, но и для жизни.
+
+                </p>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card" style="width: auto; height:auto; background-color: #CBF397;"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+              <div class="card" style="width: auto; height:33rem; background-color: #CBF397;"> <img src='{% static "/img/thecats.PNG" %}' style="max-width:20rem;" class="center" alt="">
                 <div class="card-body">
-                  <h5 class="card-header">Имя</h5>
-                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                  <h5 class="card-title">Мурка Васильевна Пушкова</h5>
+                  <p class="card-text">
+Выспускница Академии рыб и мышей. Стаж работы в нашей школе - 3 года. 
+Внимательно проверит ваши домашние работы. Покажет, что ошибки - повод не унывать, а двигаться вперед. 
+
+                </p>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card" style="width: auto; height:auto; background-color: #50B09D;"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+              <div class="card" style="width: auto; height:33rem; background-color: #50B09D;"> <img src='{% static "/img/thecats.PNG" %}' style="max-width:20rem;" class="center" alt="">
                 <div class="card-body">
-                  <h5 class="card-header">Имя</h5>
-                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                  <h5 class="card-title">Борис Тимофеевич Молоков</h5>
+                  <p class="card-text">
+                  Специалист в сфере мурчания и мяукания. Стаж работы в нашей школе - 5 лет.
+Проанализирует твою готовность по каждому из блоков DET. Укажет слабые места, не царапаясь. Поможет составить план развития.
+                </p>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card" style="width: auto; height:auto; background-color: #FFDA73"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
+              <div class="card" style="width: auto; height:33rem; background-color: #FFDA73"> <img src='{% static "/img/thecats.PNG" %}' style="max-width:20rem;" class="center" alt="">
                 <div class="card-body">
-                  <h5 class="card-header">Имя</h5>
-                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
+                  <h5 class="card-title">Настасья Филипповна Дымкова</h5>
+                  <p class="card-text">
+                    Всеми лапами за то, чтобы обучение было не только полезным, но и весёлым. Покажет, что учить язык эффективнее с помощью его интеграции в повседневную жизнь.
+                  </p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="carousel-item" data-bs-interval="5000">
-          <div class="row row-cols-1 row-cols-sm-1 row-cols-lg-4 g-4">
-            <div class="col">
-              <div class="card" style="width: auto; height: auto; background-color: #7ECBBC;"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
-                <div class="card-body">
-                  <h5 class="card-header">Имя</h5>
-                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card" style="width: auto; height: auto; background-color: #8D95D2"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
-                <div class="card-body">
-                  <h5 class="card-header">Имя</h5>
-                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card" style="width: auto; height: auto; background-color: #FFE49E"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
-                <div class="card-body">
-                  <h5 class="card-header">Имя</h5>
-                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
-                </div>
-              </div>
-            </div>
-            <div class="col">
-              <div class="card" style="width: auto; height: auto; background-color: #FFC49E;"> <img src='{% static "/img/thecats.PNG" %}' class="card-img-top" alt="">
-                <div class="card-body">
-                  <h5 class="card-header">Имя</h5>
-                  <p class="card-text">Небольшой пример текста, который должен основываться на названии карточки и составлять основную часть содержимого карточки.</p>
-                </div>
-              </div>
-            </div>
-          </div>
+       
         </div>
       </div> 
       <button class="carousel-control-prev" style="padding-right: 4rem; padding-top: 4rem;" type="button" data-bs-target="#multiItemExample2" data-bs-slide="prev">
@@ -176,19 +164,18 @@
   </div>
 </section>
 
+<p></p>
 <!-- FAQ -->
 <faq>
   <section id="questions">
     <div class="container-sm">
-      <div class="oval-container" style="display: flex; margin: auto; margin-bottom: 3rem;">
-        <div class="oval">
-          <h2 style="align-content: center;">FAQ</h2>
-        </div>
+      <div class="container py-3">
+        <h2 class="text-center">FAQ</h2>
       </div>
       <div class="accordion accordion-flush" id="accordionFlushExample">
         <div class="accordion-item">
           <h2 class="accordion-header" id="flush-headingOne"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne" style="background-color: #7ECBBC;">
-                  Как я могу подготовиться к Duolingo English Test?
+                  Как я могу подготовиться к DET?
                 </button> </h2>
           <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body"> Наш курс предлагает специальные материалы и уроки, разработанные для помощи ученикам в подготовке к тесту DET. Мы предоставляем практические задания, тесты и ресурсы, чтобы помочь вам улучшить свои навыки английского языка.</div>
@@ -197,7 +184,7 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="flush-headingTwo"> 
             <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo" style="background-color: #CBF397;">
-                Какие преимущества я получу, проходя курс подготовки к Duolingo English Test?
+                Какие преимущества я получу?
                 </button> </h2>
           <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body"> Наш курс предлагает структурированный план обучения, который поможет вам освоить ключевые навыки, необходимые для успешного сдачи теста DET. Вы также получите обратную связь от опытных преподавателей и возможность практиковать навыки на реалистических практических заданиях.</div>
@@ -205,7 +192,7 @@
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header" id="flush-headingThree"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree" style="background-color: #7ECBBC;">
-                  Каковы требования для участия в курсах подготовки к Duolingo English Test?
+                  Каковы требования для участия?
                 </button> </h2>
           <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">Требования для курсов подготовки могут в зависимости от конкретного курса. Однако, обычно требуется базовое знание английского языка и доступ к компьютеру с подключением к интернету.</div>
@@ -213,72 +200,53 @@
         </div>
         <div class="accordion-item">
           <h2 class="accordion-header" id="flush-headingFour"> <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseThree" style="background-color: #CBF397;;">
-                  Как я смогу отслеживать свой прогресс во время прохождения курсов?
+                  Как отслеживать свой прогресс?
                 </button> </h2>
           <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
             <div class="accordion-body">У Вас будет возможность отслеживать свой прогресс через нашу платформу обучения. Вы сможете видеть результаты тестов, пройденные уроки и получать обратную связь от преподавателей.</div>
           </div>
         </div>
-        <!-- <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingFive">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseThree" style="background-color: #7ECBBC;">
-                  вопрос 5
-                </button>
-              </h2>
-              <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">лялялялялялляля</div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingSix">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseThree" style="background-color: #CBF397;">
-                  вопрос 6
-                </button>
-              </h2>
-              <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body" style="background-color: #7ecbbc4b">лялялялялялляля</div>
-              </div>
-            </div> --></div>
+      </div>
     </div>
   </section>
 </faq>
 
+
+<p></p>
 <!-- feedback -->
 <section id="Feedback" class="py-3">
   <div id="multiItemExample" class="carousel carousel-dark carousel-fade slide" data-bs-ride="carousel">
     <div class="container">
-      <div class="oval-container" style="display: flex; margin: auto; margin-bottom: 3rem;">
-        <div class="oval">
-          <h2 class="text-center">Отзывы</h2>
-        </div>
+      <div class="container py-3">
+        <h2 class="text-center">Отзывы</h2>
       </div>
       <div class="carousel-inner" style="display:flex;">
         <div class="carousel-item active" data-bs-interval="5000">
           <div class="row g-3">
             <div class="col">
-              <div class="card" style="width: auto; height: auto; background-color: #FFC49E;">
-                <div class="card-header">Имя</div>
+              <div class="card" style="width: auto; height: auto; min-height: 23rem; background-color: #FFC49E;">
+                <div class="card-header"><strong>Давид Мансуров</strong></div>
                 <div class="card-body">
-                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
-                  <p class="card-text">лялялялляля</p>
+                  <!--<h5 class="card-title">Ученик</h5>-->
+                  <p class="card-text">Обучение в Purfect Language Academy было ключевым для моего успешного прохождения Duolingo English Test. Профессиональные преподаватели не только оснастили меня знаниями и навыками, необходимыми для экзамена, но и поддерживали во время обучения. Благодаря этому я сдал экзамен. Доволен выбором этой школы и рекомендую ее всем, кто готовится к подобным тестам.</p>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card" style=" width: auto; height: auto;background-color: #7ECBBC;">
-                <div class="card-header">Имя</div>
+              <div class="card" style=" width: auto; height: auto; min-height: 23rem; background-color: #7ECBBC;">
+                <div class="card-header"><strong>Юлия Макова</strong></div>
                 <div class="card-body">
-                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
-                  <p class="card-text">лялялялляля</p>
+                  <!--<h5 class="card-title">Родитель</h5>-->
+                  <p class="card-text">Наш ребенок прошел обучение в Purfect Language Academy для подготовки к Duolingo English Test, и мы не могли быть не довольны результатами. Преподаватели уделяли внимание индивидуальным потребностям нашего ребенка, помогли ему уверенно справиться с трудностями и успешно сдать экзамен. Мы глубоко благодарны школе за качественное обучение и заботу о нашем ребенке.</p>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card" style="width: auto; height: auto; background-color: #8D95D2">
-                <div class="card-header">Имя</div>
+              <div class="card" style="width: auto; height: auto; min-height: 23rem; background-color: #8D95D2">
+                <div class="card-header"><strong>Валерия Педалькина</strong></div>
                 <div class="card-body">
-                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
-                  <p class="card-text">лялялялляля</p>
+                  <!--<h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>-->
+                  <p class="card-text">Purfect Language Academy предоставила мне все необходимые знания и ресурсы для успешной подготовки к DET. Преподаватели сумели заинтересовать меня темами изучения и помогли превратить обучение в увлекательный процесс. Результаты на экзамене превзошли все мои ожидания, и я благодарен этой школе за профессиональное обучение.</p>
                 </div>
               </div>
             </div>
@@ -287,29 +255,30 @@
         <div class="carousel-item" data-bs-interval="5000">
           <div class="row g-3">
             <div class="col">
-              <div class="card" style="width: auto; height: auto; background-color: #50B09D">
-                <div class="card-header">Имя</div>
+              <div class="card" style="width: auto; height: auto; min-height: 23rem; background-color: #50B09D">
+                <div class="card-header"><strong>Константин Беландин</strong></div>
                 <div class="card-body">
-                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
-                  <p class="card-text">лялялялляля</p>
+                  <!--<h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>-->
+                  <p class="card-text">Мы были приятно удивлены качеством обучения нашего ребенка в Purfect Language Academy. Школа предоставила индивидуальный подход к обучению, а преподаватели сумели вдохновить нашего ребенка на достижение высоких результатов. Мы увидели значительный прогресс в языковых навыках ребенка и уверены, что выбрали правильную школу для его подготовки к Duolingo English Test.</p>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card" style="width: auto; height: auto; background-color: #FFE49E;">
-                <div class="card-header">Имя</div>
+              <div class="card" style="width: auto; height: auto; min-height: 23rem; background-color: #FFE49E;">
+                <div class="card-header"><strong>Кристина Магина</strong></div>
                 <div class="card-body">
-                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
-                  <p class="card-text">лялялялляля</p>
+                  <!--<h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>-->
+                  <p class="card-text">Я хочу выразить благодарность школе за эффективную подготовку к DET. Процесс обучения был увлекателен и результативен благодаря профессионализму преподавателей и инновационным методикам. Я уверенно сдала экзамен и считаю, что это во многом заслуга школы.
+                  </p>
                 </div>
               </div>
             </div>
             <div class="col">
-              <div class="card" style="width: auto; height: auto; background-color: #CBF397;">
-                <div class="card-header">Имя</div>
+              <div class="card" style="width: auto; height: auto; min-height: 23rem; background-color: #CBF397;">
+                <div class="card-header"><strong>Юрий Бригида</strong></div>
                 <div class="card-body">
-                  <h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>
-                  <p class="card-text">лялялялляля</p>
+                  <!--<h5 class="card-title">Ученик/родитель/кто-нибудь еще</h5>-->
+                  <p class="card-text">Обучение на курсах подготовки к DET в Purfect Language Academy принесло нашему ребенку значительные результаты. Профессиональные преподаватели создали комфортную обучающую среду, что положительно сказалось на успехе нашего ребенка на экзамене. Мы очень довольны выбором этой школы и рекомендуем ее всем родителям, кто ищет качественную подготовку к тестам по английскому языку.</p>
                 </div>
               </div>
             </div>
@@ -335,7 +304,8 @@
       <div class="col-md-6"> <img src="{% static 'img/feedback.svg' %}"> </div>
       <div class="col-md-6">
         <div class="container py-5">
-          <h1>Форма обратной связи</h1>
+          <h2>Форма обратной связи</h2>
+          <br>
           <form method="post"> 
             {% csrf_token %}
             <div class="row">
@@ -386,4 +356,9 @@
   </div>
 {% endif %}
 
+{% endblock %}
+
+
+{% block foot %}
+ <div class="d-flex flex-column flex-sm-row justify-content-sm-around justify-content-center py-4 border-top position-relative" style="background-color: #7ECBBC;">
 {% endblock %}

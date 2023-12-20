@@ -5,7 +5,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.utils import timezone
 
 from .forms import UserRegistrationForm, ContactForm
-from .models import Post, Profile, Course
+from .models import Profile, Course
 
 
 def main(request):
@@ -24,11 +24,6 @@ def main(request):
     else:
         form = ContactForm()
     return render(request, "DuolingoTest.html", {"form": form, "courses": courses, "status": status})
-
-
-def post_list(request):
-    posts = Post.objects.all()
-    return render(request, 'post.html', {'posts': posts})
 
 
 # registration

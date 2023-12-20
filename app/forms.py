@@ -11,7 +11,7 @@ class ContactForm(forms.ModelForm):
         widgets = {
             'message': forms.Textarea(
                 attrs={
-                    'rows': 7
+                    'rows': 6
                 }
             )
         }

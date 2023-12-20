@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-{% load static %} <!-- для прогрузки статичных файлов -->
-<!-- {% load widget_tweaks %} стили для питоновских форм -->
+{% load static %}
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -9,36 +8,112 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
     
     {% block style %} 
-    <!-- 
-    Здесь можно прописывть стили для страниц по отдельности, например login.css для login.html
-    English.css переимоновал в duolingo (со старым названием ничего не работало ¯\_(ツ)_/¯)
-    <style> Евы закинул в ve.css
-    + есть возможность поменять title
-    -->
     {% endblock %}
+    <style>
+
+      .center {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+      }
+
+      @font-face {
+        font-family: "Lack";
+        font-style: normal;
+        font-weight: 900;
+        src: local("Lack"),
+            url('{% static "/fonts/Lack-Regular.otf" %}') format("otf");
+      }
+
+      @font-face {
+        font-family: "Lack";
+        font-style: italic;
+        font-weight: 900;
+        src: local("Lack"),
+            url('{% static "/fonts/Lack-Italic.otf" %}');
+      }
+      @font-face {
+        font-family: "Lack-Line";
+        font-style: normal;
+        font-variant: line;
+        font-weight: 900;
+        src: local("Lack"),
+            url('{% static "/fonts/Lack-Line-Regular.otf" %}');
+      }
+
+      @font-face {
+        font-family: "Lack-Line";
+        font-style: italic;
+        font-variant: line;
+        font-weight: 900;
+
+        src: local("Lack"),
+            url('{% static "/fonts/Lack-Line-Italic.otf" %}');
+      }
+
+      .font {
+        font-family: "Lack";
+        font-style: normal;
+      }
+
+      a {
+        font-family: 'Lack';
+        font-style: normal;
+        white-space: nowrap;
+      }
+
+     x {
+        font-family: 'Lack';
+        font-style: normal;
+        white-space: nowrap;
+      }
+
+      h1 {
+        font-family: 'Lack';
+        font-style: normal;
+        white-space: nowrap;
+      }
+      
+      h2 {
+        white-space: nowrap;
+        font-family: 'Lack';
+        font-style: normal;
+      }
+
+      p {
+        font-family: 'Lack';
+        font-style: normal;
+      }
+
+      .card-header {
+        font-family: 'Lack';
+        font-style: normal;
+      }
+
+    </style>
     <title>Duolingo Test</title>
 </head>
 
 <body style=" background-image: url('{% static "/img/background4.png" %}');">
 
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-sm fixed-top" style="background-color: #7ECBBC;">
+    <nav class="navbar navbar-expand-md fixed-top" style="background-color: #7ECBBC;">
         <div class="container">
            <a href="/" class="navbar-brand">Кошолого</a>
            <button class="navbar-toggler" type="'button" data-bs-toggle="collapse" data-bs-target="#navmenu"><span class="navbar-toggler-icon"></span></button>
            <div class="collapse navbar-collapse" id="navmenu">
             <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
+                    <a href="/#Teachers" class="nav-link">Преподаватели</a>
+                </li>
+                <li class="nav-item">
                     <a href="/#questions" class="nav-link">FAQ</a>
+                </li>    
+                <li class="nav-item">
+                    <a href="/#Feedback" class="nav-link">Отзывы</a>
                 </li>                
                 <li class="nav-item">
                     <a href="/#Course" class="nav-link">Записаться на курс</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/#Feedback" class="nav-link">Отзывы</a>
-                </li>
-                <li class="nav-item">
-                    <a href="/#Contact" class="nav-link">Контакты центров</a>
                 </li>
               </li>
               <li class="nav-item">
@@ -59,17 +134,15 @@
     </nav>
     
 
-    <!-- navbar fixed-top закрывает верхние пиксели. Для страниц где сразу текст нужно прописывать отступы сверху -->
+
     <div>
     {% block content %}
     {% endblock %}
     </div>
-    
-  
-  <!-- footer -->
-  <!-- footer not fixed-down будет посреди страницы с малым количеством элементов (пример /profile) - нужно чтобы он был снизу-->
+
   <section>
-    <div class="d-flex flex-column flex-sm-row justify-content-sm-around justify-content-center py-4 border-top position-relative" style="background-color: #7ECBBC;">
+    {% block foot %}
+    {% endblock %}
       <p style="margin: auto">&copy; Purrrfect Language Academy, 2023. All rights reserved.</p>
       <ul class="list-unstyled d-flex" style="margin: auto;">
           <li class="ms-3"><a href="https://t.me/PurrrfectAcademy" target="_blank" style="color: black;"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-telegram" viewBox="0 0 16 16">

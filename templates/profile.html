@@ -9,16 +9,21 @@
 <div class="row py-5 g-0">
     <div class="col-lg-4"></div>
     <div class="col-lg-4">
-        <div class="container py-3">
+        <div class="container py-5">
             <ul class="list-group list-group-flush">
-                <div class="card-header"> <div class="flex">Личная информация <a href="/password_change">сменить пароль</a> </div> </div>
+                <div class="card-header"> <div class="flex"><h4>Личная информация</h4></div> </div>
                 <h5>
                 <li class="list-group-item"> <i class="bi bi-person"></i> {{ user.first_name }} {{ user.last_name }}</li>
                 <li class="list-group-item"> <i class="bi bi-bug"></i> {{ user.username }}</li>
                 <li class="list-group-item"> <i class="bi bi-envelope"></i> {{ user.email }}</li>
                 </h5>
             </ul>
+            <a href="/password_change">сменить пароль</a>
         </div>
     </div>
 </div>
 {% endblock content %}
+
+{% block foot %}
+ <div class="footer fixed-bottom d-flex flex-column flex-sm-row justify-content-sm-around justify-content-center py-4 border-top position-absolute"  style="background-color: #7ECBBC;">
+{% endblock %}
